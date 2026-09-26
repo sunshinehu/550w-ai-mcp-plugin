@@ -1,0 +1,10 @@
+{
+  "name": "550w-ai-subtitle-watermark-removal",
+  "version": "1.0.0",
+  "description": "Remove hardcoded video subtitles and video or image watermarks through 550W AI's remote OAuth MCP service.",
+  "author": { "name": "SunshineHu" },
+  "homepage": "https://eraser.550wai.com/agent/",
+  "repository": "https://github.com/sunshinehu/550w-ai-mcp-plugin",
+  "keywords": ["video subtitles", "video watermark", "image watermark", "media processing"],
+  "logo": "assets/logo.png"
+}
