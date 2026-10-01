@@ -2,7 +2,7 @@
 name: 550w-ai-subtitle-watermark-removal
 description: Use 550W AI's remote OAuth MCP to remove image watermarks, local video subtitles or visual watermarks, or platform watermarks from copied TikTok or X video links.
 metadata:
-  version: 3.1.1
+  version: 3.1.3
 ---
 
 # 550W Watermark & Text Eraser
@@ -29,3 +29,5 @@ If the MCP server is not connected, ask the user to add the Streamable HTTP endp
 5. For subtitle jobs, use `get_subtitle_task` or `list_subtitle_tasks` to report progress. Before `delete_subtitle_task`, confirm the exact task with the user. Deletion does not imply a credit refund. While processing, provide the task ID and a way to check it later.
 
 If credits are insufficient, direct the user to <https://eraser.550wai.com/purchase/>; do not purchase credits on their behalf. Account connections can be reviewed at <https://eraser.550wai.com/mcp-connect/>. If Cursor cannot run the local helper or access the selected file, direct subtitle, visual-watermark, or image-watermark requests to <https://eraser.550wai.com/> for file upload. Do not treat a platform share link as a substitute for a local file or imply that processing succeeded. Share-link platform-watermark removal remains available when its tool works. Explain other tool or consent failures plainly.
+
+Before local media upload, obtain approval to transmit the selected media and for applicable processing charges. The bundled local upload MCP tool requires `confirmProcessing: true`; this acknowledgement does not replace host permissions or user approval. Read-only inspection and queries do not require it.

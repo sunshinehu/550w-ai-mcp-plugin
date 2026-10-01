@@ -1,6 +1,6 @@
 # 550W Watermark & Text Eraser for Cursor
 
-Version 3.1.1. This native Cursor plugin uses OAuth MCP, not an API Key setup form. The separate standalone Skill supports both routes. MIT licensed; no private server source or account credentials are included.
+Version 3.1.3. This native Cursor plugin uses OAuth MCP, not an API Key setup form. The separate standalone Skill supports both routes. MIT licensed; no private server source or account credentials are included. Local upload helpers require explicit processing approval before opening or transmitting selected media.
 
 Connect Cursor to 550W AI's global remote MCP service for video subtitle removal, supported public video-sharing link watermark removal, image watermark removal, and task or credit lookup.
 
