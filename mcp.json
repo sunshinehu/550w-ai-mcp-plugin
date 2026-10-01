@@ -2,6 +2,10 @@
   "mcpServers": {
     "550w-ai-media": {
       "url": "https://www.550wai.cn/mcp/global"
+    },
+    "550w-local-upload": {
+      "command": "node",
+      "args": ["${CURSOR_PLUGIN_ROOT}/dist/550w-upload-mcp.cjs"]
     }
   }
 }
