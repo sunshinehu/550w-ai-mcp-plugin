@@ -53635,6 +53635,8 @@ var require_oauth_media_uploader = __commonJS({
       }
     }
     async function uploadPreparedMedia(input) {
+      if (input.confirmProcessing !== true)
+        throw new Error("User approval of media transmission and possible billing is required (confirmProcessing=true)");
       const url = validatePreparedUpload(input);
       const extension = node_path_1.default.extname(input.filePath).toLowerCase();
       if (!EXTENSIONS[input.mediaType].has(extension))
@@ -53727,6 +53729,7 @@ server.registerTool("upload_prepared_media", {
   inputSchema: {
     filePath,
     mediaType,
+    confirmProcessing: zod_1.z.literal(true).describe("Set true only after the user approves this file transmission and possible processing charge."),
     region: zod_1.z.literal("global"),
     uploadUrl: zod_1.z.string().url(),
     uploadTicket: zod_1.z.string().min(1),
