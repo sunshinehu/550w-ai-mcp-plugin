@@ -2,7 +2,7 @@
 name: 550w-ai-subtitle-watermark-removal
 description: Use 550W AI's remote OAuth MCP to remove image watermarks, local video subtitles or visual watermarks, or platform watermarks from copied TikTok or X video links.
 metadata:
-  version: 3.1.3
+  version: 3.1.4
 ---
 
 # 550W Watermark & Text Eraser

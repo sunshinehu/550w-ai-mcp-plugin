@@ -53709,7 +53709,7 @@ var mcp_js_1 = require_mcp();
 var stdio_js_1 = require_stdio2();
 var zod_1 = require_zod();
 var oauth_media_uploader_1 = require_oauth_media_uploader();
-var server = new mcp_js_1.McpServer({ name: "550w-local-media-upload", version: "3.1.0" });
+var server = new mcp_js_1.McpServer({ name: "550w-local-media-upload", version: "3.1.4" });
 var mediaType = zod_1.z.enum(["image", "video"]);
 var filePath = zod_1.z.string().min(1).describe("Absolute path of a local file selected by the user.");
 server.registerTool("inspect_local_media", {

@@ -5,7 +5,7 @@ const mcp_js_1 = require("@modelcontextprotocol/sdk/server/mcp.js");
 const stdio_js_1 = require("@modelcontextprotocol/sdk/server/stdio.js");
 const zod_1 = require("zod");
 const oauth_media_uploader_1 = require("./oauth-media-uploader");
-const server = new mcp_js_1.McpServer({ name: "550w-local-media-upload", version: "3.1.0" });
+const server = new mcp_js_1.McpServer({ name: "550w-local-media-upload", version: "3.1.4" });
 const mediaType = zod_1.z.enum(["image", "video"]);
 const filePath = zod_1.z.string().min(1).describe("Absolute path of a local file selected by the user.");
 server.registerTool("inspect_local_media", {

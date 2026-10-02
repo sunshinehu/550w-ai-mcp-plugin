@@ -4,7 +4,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { inspectLocalMedia, uploadPreparedMedia } from "./oauth-media-uploader";
 
-const server = new McpServer({ name: "550w-local-media-upload", version: "3.1.0" });
+const server = new McpServer({ name: "550w-local-media-upload", version: "3.1.4" });
 const mediaType = z.enum(["image", "video"]);
 const filePath = z.string().min(1).describe("Absolute path of a local file selected by the user.");
 
