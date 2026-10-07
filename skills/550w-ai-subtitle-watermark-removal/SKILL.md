@@ -1,4 +1,5 @@
 ---
+version: 3.1.4
 name: 550w-ai-subtitle-watermark-removal
 description: Use 550W AI's remote OAuth MCP to remove image watermarks, local video subtitles or visual watermarks, or platform watermarks from copied TikTok or X video links.
 metadata:
@@ -22,6 +23,24 @@ If the MCP server is not connected, ask the user to add the Streamable HTTP endp
 
 ## Workflow
 
+### Standalone Skill installations
+
+Installing this Skill alone (for example through skills.sh) does not register the
+plugin's local MCP upload tools. If `inspect_local_media` and
+`upload_prepared_media` are unavailable, use the bundled
+`scripts/550w-upload.cjs` with host-approved Node.js execution:
+`node {baseDir}/scripts/550w-upload.cjs inspect` reads
+`{"filePath":"absolute selected file path","mediaType":"image"}` from stdin.
+After remote `prepare_media_upload`, call the same script with `upload` and stdin
+JSON containing the selected `filePath`, `mediaType`, `region:"global"`, returned
+`uploadUrl` and `uploadTicket`, `confirmProcessing:true`, and the stable image
+`operationId` where applicable. Never send an OAuth token to this script.
+The script's result supplies the actual media metadata and task ID used below.
+If the script is missing, install the complete official plugin/package or use
+<https://eraser.550wai.com/>. Do not fabricate tools, read credentials, silently
+switch authentication, or claim processing ran. Share-link and read-only remote
+tools can still be used without a local uploader.
+
 1. Identify whether the request is for hardcoded subtitles, a supported public video-sharing link, or image watermark/text removal. Before upload or paid submission, tell the user that the media or link will be sent to 550W AI and that processing uses account credits. Reading credits and task status does not consume credits.
 2. Use `query_credits` to check the balance. For a user-selected local file, call the local `inspect_local_media` tool to obtain its actual byte size, then call remote `prepare_media_upload` with that size and media type. Pass its `uploadUrl` and `uploadTicket`, the same file path, media type, and `region: "global"` to local `upload_prepared_media`. Do not pass OAuth tokens. For video, use the returned `mediaId`, width, height, and duration for `estimate_subtitle_cost` and `submit_subtitle_task`; do not invent media properties. Submit with a stable 8–128 character `idempotencyKey`. On a timeout, check the task and retry only with the same inputs and key.
 3. For a supported public video-sharing link, use `remove_video_watermark` with a stable 8–64 character `operationId`. Reuse that ID on retries. Supported sources and the final price are determined by the service response; do not promise support for an unverified platform.
@@ -30,4 +49,4 @@ If the MCP server is not connected, ask the user to add the Streamable HTTP endp
 
 If credits are insufficient, direct the user to <https://eraser.550wai.com/purchase/>; do not purchase credits on their behalf. Account connections can be reviewed at <https://eraser.550wai.com/mcp-connect/>. If Cursor cannot run the local helper or access the selected file, direct subtitle, visual-watermark, or image-watermark requests to <https://eraser.550wai.com/> for file upload. Do not treat a platform share link as a substitute for a local file or imply that processing succeeded. Share-link platform-watermark removal remains available when its tool works. Explain other tool or consent failures plainly.
 
-Before local media upload, obtain approval to transmit the selected media and for applicable processing charges. The bundled local upload MCP tool requires `confirmProcessing: true`; this acknowledgement does not replace host permissions or user approval. Read-only inspection and queries do not require it.
+Before local media upload, obtain approval to transmit the selected media and for applicable processing charges. `confirmProcessing: true` acknowledges processing but does not replace host permissions or user approval. Read-only inspection and queries do not require it.
